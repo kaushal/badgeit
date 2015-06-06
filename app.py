@@ -80,17 +80,17 @@ def challenge():
 
 @app.route('/claim_challenge', methods=['GET'])
 def claim_challenge():
-    name = request.args.get('badgeImage')
+    name = request.args.get('name')
     challenge = challenges.find({'badgeImage': name})
     doc = {}
     user = users.find_one({'name': g.user['screen_name']})
     doc['name'] = g.user['screen_name']
-    doc['profile_image_url'] = user[0]['profile_image_url']
-    challenge.update(
-            {'name': name},
-        { "$push": {'claimed': doc}}
+    doc['profile_image_url'] = user['profile_image_url']
+    challenges.update(
+            {'name': doc['name']},
+            {"$push": {'claimed': doc}}
     )
-    return url_for('challenges')
+    return url_for('get_challenges')
 
 
 @app.route('/')
