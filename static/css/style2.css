@@ -19,6 +19,13 @@
     src: local('Economica Bold'), local('Economica-Bold'), url(http://fonts.gstatic.com/s/economica/v4/UK4l2VEpwjv3gdcwbwXE9Bampu5_7CjHW5spxoeN3Vs.woff2) format('woff2'), url(http://fonts.gstatic.com/s/economica/v4/UK4l2VEpwjv3gdcwbwXE9KRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
 }
 
+@font-face {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Pacifico Regular'), local('Pacifico-Regular'), url(http://fonts.gstatic.com/s/pacifico/v7/Q_Z9mv4hySLTMoMjnk_rCXYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2'), url(http://fonts.gstatic.com/s/pacifico/v7/yunJt0R8tCvMyj_V4xSjaXYhjbSpvc47ee6xR_80Hnw.woff) format('woff');
+}
+
 h2 {
     font-size: 250%;
 	font-weight: 800;
@@ -27,7 +34,6 @@ h2 {
 }
 
 h3 {
-    font-size: 250%;
     font-weight: 800;
     text-shadow: 4px 4px 2px rgba(5, 5, 5, 0.71);
 }
@@ -223,6 +229,16 @@ h2, h3, h4, h5 {
     color: #fff;
 }
 
-.badge-list .badge-text h3 {
+.badge-list .badge-image {
+    padding-right: 0;
+}
+
+.badge-list .badge-title {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.badge-list .badge-desc {
     margin-top: 0;
+    margin-bottom: 20px;
 }
