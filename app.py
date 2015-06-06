@@ -73,7 +73,7 @@ def challenge():
     name = request.args.get('name')
     challenge = challenges.find({'badgeTitle': name})
     challenge = [c for c in challenge]
-    return render_template('challenge_page.html', challenge=challenge)
+    return render_template('challenge_page.html', challenge=challenge[0])
 
 
 @app.route('/')
