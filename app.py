@@ -97,12 +97,13 @@ def index():
     tweets = None
     if g.user is not None:
         resp = twitter.request('statuses/home_timeline.json')
+        userResp = twitter.request('users/show.json?screen_name=cashbagel')
         if resp.status == 200:
             tweets = resp.data
         else:
             flash('Unable to load tweets from Twitter.')
         if len([item for item in users.find({'name': g.user['screen_name']})]) == 0:
-            users.insert({'name': g.user['screen_name'], 'victories': [], 'profile_image_url': tweets[0]['user']['profile_image_url']})
+            users.insert({'name': g.user['screen_name'], 'victories': [], 'profile_image_url': userResp.data['profile_image_url']})
         return redirect(url_for('get_challenges'))
     else:
         return render_template('splash.html', tweets=tweets)
