@@ -94,9 +94,11 @@ $(function(){
 
   $('#challenge-create').submit(function(e)
   {
+    var $this = $(this);
   	var data = {
 	  badgeImage: canvas.toDataURL(),
-	  badgeText: $(this).find(':input[name="badge-text"]').val().trim()
+      badgeTitle: $this.find(':input[name="badge-title"]').val().trim(),
+	  badgeText: $this.find(':input[name="badge-text"]').val().trim()
 	};
 
   	if (symbolCount > 0 && data.badgeText.trim().length > 0) {

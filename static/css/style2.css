@@ -12,11 +12,28 @@
   	src: local('Open Sans Bold'), local('OpenSans-Bold'), url(http://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzBampu5_7CjHW5spxoeN3Vs.woff2) format('woff2'), url(http://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
 }
 
+@font-face {
+    font-family: 'Economica';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Economica Bold'), local('Economica-Bold'), url(http://fonts.gstatic.com/s/economica/v4/UK4l2VEpwjv3gdcwbwXE9Bampu5_7CjHW5spxoeN3Vs.woff2) format('woff2'), url(http://fonts.gstatic.com/s/economica/v4/UK4l2VEpwjv3gdcwbwXE9KRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}
+
 h2 {
-	font-size: 250%;
+    font-size: 250%;
 	font-weight: 800;
 	text-align: center;
 	text-shadow: 4px 4px 2px rgba(5, 5, 5, 0.71);	
+}
+
+h3 {
+    font-size: 250%;
+    font-weight: 800;
+    text-shadow: 4px 4px 2px rgba(5, 5, 5, 0.71);
+}
+
+h2, h3, h4, h5 {
+    font-family: 'Economica', sans-serif;
 }
 
 .navbar {
@@ -28,23 +45,26 @@ h2 {
 	height: 80px; 
 }
 
+.navbar-header {
+    width: 100%;
+}
+
 .logo {
-	max-height: 50px;
+	max-height: 60px;
+    margin-top: 8px;
+}
+
+.logo-col {
+    padding-right: 0;
+    margin-right: -15px;
 }
 
 .navbar .btn-default {
 	color: #fff;
 	background-color: rgba(0,0,0,0);
 	border-color: #fff;
-}
-
-.navbar .navbar-collapse {
-	margin-top: 20px;
-}
-
-.navbar .navbar-collapse a {
-	padding-top: 10px;
-	padding-bottom: 10px;
+    margin-top: 22px;
+    font-family: "Economica", sans-serif;
 }
 
 .about {
@@ -128,6 +148,7 @@ h2 {
     width: 100%;
     text-align: center;
     overflow-x: hidden;
+    height: 100vh;
 }
 
 .badge-creator h2 {
@@ -182,3 +203,26 @@ h2 {
     width: 100%;
 }
 
+.badge-list {
+    padding: 100px 0;
+    background: #36363a;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+.badge-list h2 {
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.badge-list .badge-text {
+    text-align: left;
+    color: #fff;
+}
+
+.badge-list .badge-text h3 {
+    margin-top: 0;
+}
