@@ -47,10 +47,6 @@ def get_challenges():
     chals = [challenge for challenge in challenges.find()]
     return render_template('challenges.html', challenges=chals)
 
-@app.route('/challenges', methods=['POST'])
-def create_handler():
-    return url_for('get_challenges')
-
 @app.route('/create_challenge_page')
 def create_challenge_page():
     return render_template('challenge_create.html')
@@ -71,6 +67,13 @@ def email():
 @app.route('/analytics', methods=['POST'])
 def analytics():
     return render_template('splash.html')
+
+@app.route('/challenge', methods=['GET'])
+def challenge():
+    name = request.args.get('name')
+    challenge = challenges.find({'badgeTitle': name})
+    challenge = [c for c in challenge]
+    return render_template('challenge_page.html', challenge=challenge)
 
 
 @app.route('/')
