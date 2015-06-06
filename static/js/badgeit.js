@@ -98,9 +98,8 @@ $(function(){
   		  url: $(this).attr('action'),
 		  data: data,
   		  success: function(msg) {
-
-        	//TODO: Not sure what to do on success.
-
+            console.log(msg);
+            window.location.href=msg;
   		  },
   		  error: function(XMLHttpRequest, textStatus, errorThrown) {
      		alert("Whoops!! Something when wrong when we tried to create your badge.");
