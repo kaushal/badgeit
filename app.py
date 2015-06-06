@@ -57,12 +57,10 @@ def create_challenge_page():
 
 @app.route('/create_challenge', methods=['POST'])
 def create_challenge():
-    text = request.form['badgeText']
-    fh = open("static/badges/" + request.form['badgeText'] + '.png', "wb")
+    fh = open("static/badges/" + request.form['badgeTitle'] + '.png', "wb")
     fh.write(request.form['badgeImage'][22:].decode('base64'))
     fh.close()
-    url = request.form['badgeText']
-    challenges.insert({'url': url, 'created': g.user['screen_name']})
+    challenges.insert({'badgeTitle': request.form['badgeTitle'], 'badgeText': request.form['badgeText'],'name': g.user['screen_name']})
     return 'htp://localhost:5000/challenges'
 
 @app.route('/email', methods=['POST'])
