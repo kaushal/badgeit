@@ -57,12 +57,13 @@ def create_challenge_page():
 
 @app.route('/create_challenge', methods=['POST'])
 def create_challenge():
+    text = request.form['badgeText']
     fh = open("static/badges/" + request.form['badgeText'] + '.png', "wb")
     fh.write(request.form['badgeImage'][22:].decode('base64'))
     fh.close()
     url = request.form['badgeText']
     challenges.insert({'url': url, 'created': g.user['screen_name']})
-    return 'http://localhost:5000/challenges'
+    return 'htp://localhost:5000/challenges'
 
 @app.route('/email', methods=['POST'])
 def email():
@@ -84,7 +85,7 @@ def index():
         else:
             flash('Unable to load tweets from Twitter.')
         if len([item for item in users.find({'name': g.user['screen_name']})]) == 0:
-            users.insert({'name': g.user['screen_name'], 'victories': []})
+            users.insert({'name': g.user['screen_name'], 'victories': [], 'profile_image_url': tweets[0]['user']['profile_image_url']})
         return redirect(url_for('get_challenges'))
     else:
         return render_template('splash.html', tweets=tweets)
