@@ -10,35 +10,40 @@
     <body>
         <nav class="navbar navbar-fixed-top">
             <header class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                        <img src="/img/badgeIt.png" class="img-responsive logo">
-                    </a>
-                </div>
-
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a role="button" href="{{ url_for('login') }}" class="btn btn-default">login</a></li>
-                    </ul>
+                <div class="navbar-header row">
+                    <div class="logo-col col-xs-9 col-lg-11">
+                        <a href="/"><img src="img/badgeIt.png" class="img-responsive logo"></a>
+                    </div>
+                    <div class="col-xs-3 col-lg-1">
+                        {% if g.user %}
+                        <a class="btn btn-default" role="button" href="{{url_for('create_challenge_page') }}">MAKE BADGE</a>
+                        {% else %}
+                        <a class="btn btn-default navbar-btn" role="button" href="{{ url_for('login') }}">LOGIN</a>
+                        {% endif %}
+                    </div>
                 </div>
             </header>
         </nav>
 
+        <section class="container badge-list">
 
-    <form action="{{url_for('create_challenge_page') }}">
-        <button type=submit>Create Challenge!</button>
-    </form>
+            <h2>RECENT BADGES</h2>
+            <!--
+            <a href="{{url_for('create_challenge_page') }}" class="btn btn-default">Create Challenge!</a>
+            <a href="{{url_for('analytics') }}" class="btn btn-default">Analytics!</a>
+            -->
+            {% if challenges %}
+            {% for challenge in challenges %}
+            <a class="row" href="#">
+                <div class="badge-image col-xs-4 col-lg-offset-1 col-lg-1"><img class="img-responsive" src="badges/{{ challenge["url"] }}.png" alt="{{ challenge["url"] }}"></div>
+                <div class="badge-text col-xs-8 col-lg-9">
+                    <h3>{{ challenge["url"] }}</h3>
+                    <h4>@{{ challenge["created"] }}</h4>
+                </div>
+            </a>
+            {% endfor %}
+            {% endif %}
+        </section>
 
-    <form action="{{url_for('analytics') }}">
-        <button type=submit>analytics!</button>
-    </form>
-
-    {% if challenges %}
-        {% for challenge in challenges %}
-        <li>{{ challenge }}</li>
-        {% endfor %}
-    {% else %}
-        <p>there are no challenges currently in the system, please try again later or create your own!</p>
-    {% endif %}
 </body>
 </html>
