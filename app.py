@@ -61,7 +61,7 @@ def create_challenge():
     fh.write(request.form['badgeImage'][22:].decode('base64'))
     fh.close()
     challenges.insert({'badgeTitle': request.form['badgeTitle'], 'badgeText': request.form['badgeText'],'name': g.user['screen_name']})
-    return 'htp://localhost:5000/challenges'
+    return url_for('challenges')
 
 @app.route('/email', methods=['POST'])
 def email():
