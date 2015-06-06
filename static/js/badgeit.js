@@ -92,6 +92,12 @@ $(function(){
     symbolCount++;
   });
 
+  $(':input').focus(function(e)
+  {
+     active = null;
+     canvas.discardActiveObject();
+  });
+
   $('#challenge-create').submit(function(e)
   {
     var $this = $(this);
@@ -101,7 +107,7 @@ $(function(){
 	  badgeText: $this.find(':input[name="badge-text"]').val().trim()
 	};
 
-  	if (symbolCount > 0 && data.badgeText.trim().length > 0) {
+  	if (symbolCount > 0 && data.badgeTitle.length > 0 && data.badgeText.length > 0) {
 		$.ajax({
 		  type: "POST",
   		  url: $(this).attr('action'),

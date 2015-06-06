@@ -6,8 +6,8 @@
 
     {% if challenges %}
     {% for challenge in challenges %}
-    <a class="row" href="{{url_for("challenge", name=challenge["badgeTitle"])}}">
-        <div class="badge-image col-xs-4 col-lg-offset-1 col-lg-1"><img class="img-responsive" src="badges/{{ challenge["badgeTitle"] }}.png" alt="{{ challenge["badgeTitle"] }}"></div>
+    <a class="row" href="{{url_for("challenge", name=challenge["badgeImage"])}}">
+        <div class="badge-image col-xs-4 col-lg-offset-1 col-lg-1"><img class="img-responsive" src="badges/{{ challenge["badgeImage"] }}.png" alt="{{ challenge["badgeTitle"] }}"></div>
         <div class="badge-text col-xs-8 col-lg-9">
             <h3 class="badge-title">{{ challenge["badgeTitle"] }}:</h3>
             <h3 class="badge-desc">{{ challenge["badgeText"] }}</h3>

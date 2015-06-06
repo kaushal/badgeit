@@ -242,3 +242,47 @@ h2, h3, h4, h5 {
     margin-top: 0;
     margin-bottom: 20px;
 }
+
+.badge-page {
+    padding: 100px 0;
+    background: #36363a;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+.badge-page .badge-block {
+    padding-right: 0;
+}
+
+.badge-page .claim-it {
+    text-align: left;
+}
+
+.badge-page .claim-it .btn {
+    background-color: transparent;
+    border: 1px solid #fff;
+    font-family: 'Economica', sans-serif;
+    color: #fff;
+    font-size: 150%;
+    vertical-align: middle;
+    display: inline-block;
+    float: none;
+}
+
+.badge-page h2 {
+    font-family: "Pacifico", serif;
+    font-size: 150%;
+    margin-top: 5px;
+}
+
+.badge-page h3 {
+    margin-top: 15px;
+}
+.badge-page h3 span {
+    padding-bottom: 15px;
+    border-bottom: 5px solid #fff;
+    display: inline-block;
+}
