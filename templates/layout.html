@@ -1,17 +1,36 @@
-<!doctype html>
-<title>{% block title %}Welcome{% endblock %} | Flask OAuth Example</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static',
-  filename='style.css') }}">
-<h1>Flask OAuth Example</h1>
-<ul class=navigation>
-  <li><a href="{{ url_for('index') }}">overview</a>
-  {% if g.user %}
-  <li><a href="{{ url_for('logout') }}">sign out [{{ g.user.name }}]</a>
-  {% else %}
-  <li><a href="{{ url_for('login') }}">sign in</a>
-  {% endif %}
-</ul>
-{% for message in get_flashed_messages() %}
-  <p class=message>{{ message }}
-{% endfor %}
-{% block body %}{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/bootstrap3.3.4.min.css">
+    <link rel="stylesheet" href="css/style2.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BADGEit | Challenge Accepted!!</title>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <header class="container">
+            <div class="navbar-header row">
+                <div class="logo-col col-xs-9 col-lg-11">
+                    <a href="/"><img src="img/badgeIt.png" class="img-responsive logo"></a>
+                </div>
+                <div class="col-xs-3 col-lg-1">
+                    {% if g.user %}
+                    <a class="btn btn-default" role="button" href="{{url_for('create_challenge_page') }}">MAKE BADGE</a>
+                    {% else %}
+                    <a class="btn btn-default navbar-btn" role="button" href="{{ url_for('login') }}">LOGIN</a>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+    </nav>
+
+    {% block body %}{% endblock %}
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap3.3.4.min.js"></script>
+    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script>-->
+    <script src="js/fabric.js"></script>
+    <script src="js/badgeit.js"></script>
+</body>
+</html>

@@ -1,30 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="css/bootstrap3.3.4.min.css">
-        <link rel="stylesheet" href="css/style2.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>BADGEit | Challenge Accepted!!</title>
-    </head>
-    <body>
-        <nav class="navbar navbar-fixed-top">
-            <header class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                        <img src="img/badgeIt.png" class="img-responsive logo">
-                    </a>
-                </div>
-
-                <ul class="nav navbar-nav navbar-right">
-                        <li><a role="button" href="{{ url_for('login') }}" class="btn btn-default">login</a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-            </header>
-        </nav>
-
-    <!-- Start Badge Creation Tool -->
+{% extends "layout.html" %}
+{% block body %}
+<!-- Start Badge Creation Tool -->
     <section class="container badge-creator">
         <h2>BADGE BUILDER</h2>
         <div class="row badge-creator-inner">
@@ -65,11 +41,4 @@
             </div>
         </form>
     </section>
-
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script>-->
-    <script src="js/fabric.js"></script>
-    <script src="js/badgeit.js"></script>
-    <!-- End Badge Creation Tool -->
-</body>
-</html>
+{% endblock %}
