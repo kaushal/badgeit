@@ -79,7 +79,7 @@ h2, h3, h4, h5 {
 	width: 100%;
     margin-top: 80px;
 	float: left;
-	height: 100vh;
+	height: 150vh;
     background:url(../img/badgeitoniphone.jpg);
     background-size:cover;
     background-position: center;
@@ -153,7 +153,7 @@ h2, h3, h4, h5 {
 	}
 	
 .how-xs {
-	height: 100vh;
+	height: 150vh;
 	color: white;
 	width: 100%;
 	float: left;
