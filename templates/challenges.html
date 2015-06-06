@@ -10,10 +10,10 @@
     {% if challenges %}
     {% for challenge in challenges %}
     <a class="row" href="#">
-        <div class="badge-image col-xs-4 col-lg-offset-1 col-lg-1"><img class="img-responsive" src="badges/{{ challenge["url"] }}.png" alt="{{ challenge["url"] }}"></div>
+        <div class="badge-image col-xs-4 col-lg-offset-1 col-lg-1"><img class="img-responsive" src="badges/{{ challenge["badgeTitle"] }}.png" alt="{{ challenge["badgeTitle"] }}"></div>
         <div class="badge-text col-xs-8 col-lg-9">
-            <h3>{{ challenge["url"] }}</h3>
-            <h4>@{{ challenge["created"] }}</h4>
+            <h3>{{ challenge["badgeTitle"] }}:</h3>
+            <h4>{{ challenge["badgeText"] }}</h4>
         </div>
     </a>
     {% endfor %}
