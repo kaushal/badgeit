@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class="container badge-page">
+
+    <div class="row">
+        <div class="badge-block col-lg-offset-4 col-lg-2 col-xs-5 col-xs-offset-1">
+            <div><img class="img-responsive" src="badges/{{ challenge["badgeTitle"] }}.png" alt="{{ challenge["badgeTitle"] }}"></div>
+            <h2>{{ challenge["badgeTitle"] }}</h2>
+        </div>
+        <div class="claim-it col-lg-2 col-xs-6">
+            <a class="btn btn-default" href="#">ACCEPT</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3 class="col-lg-offset-4 col-lg-4 col-xs-10 col-xs-offset-1">
+            <span>CHALLENGE: {{ challenge["badgeText"] }}</span>
+        </h3>
+    </div>
+
+    {% if challenge["claimed"] %}
+    {% for claimer in challenge["claimed"] %}
+
+    <div class="row">
+        <div class="claim-block col-lg-offset-4 col-lg-2 col-xs-5 col-xs-offset-1">
+            <h2>{{ claimer["name"] }}</h2>
+            <div><img class="img-responsive" src="{{ claimer["profile_image_url"] }}" alt="{{ claimer["name"] }}"></div>
+        </div>
+    </div>
+
+    {% endfor %}
+    {% else %}
+    <div class="row">
+        <h4 class="col-lg-offset-4 col-lg-4 col-xs-10 col-xs-offset-1">
+            <span>~DUST~</span>
+        </h4>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}
