@@ -55,10 +55,10 @@ def create_challenge_page():
 @app.route('/create_challenge', methods=['POST'])
 def create_challenge():
     number = str(random.randint(0, 1000000))
-    fh = open("static/badges/" + number + '.png', "wb")
+    fh = open("static/badges/" + number, "wb")
     fh.write(request.form['badgeImage'][22:].decode('base64'))
     fh.close()
-    challenges.insert({'badgeImage': number, 'badgeTitle': request.form['badgeTitle'], 'badgeText': request.form['badgeText'],'name': g.user['screen_name']})
+    challenges.insert({'badgeImage': number, 'badgeTitle': request.form['badgeTitle'], 'badgeText': request.form['badgeText'],'name': g.user['screen_name'], 'claimed': []})
     return url_for('get_challenges')
 
 @app.route('/email', methods=['POST'])
@@ -72,10 +72,25 @@ def analytics():
 
 @app.route('/challenge', methods=['GET'])
 def challenge():
-    name = request.args.get('badgeImage')
+    name = request.args.get('name')
     challenge = challenges.find({'badgeImage': name})
     challenge = [c for c in challenge]
     return render_template('challenge_page.html', challenge=challenge[0])
+
+
+@app.route('/claim_challenge', methods=['GET'])
+def claim_challenge():
+    name = request.args.get('badgeImage')
+    challenge = challenges.find({'badgeImage': name})
+    doc = {}
+    user = users.find_one({'name': g.user['screen_name']})
+    doc['name'] = g.user['screen_name']
+    doc['profile_image_url'] = user[0]['profile_image_url']
+    challenge.update(
+            {'name': name},
+        { "$push": {'claimed': doc}}
+    )
+    return url_for('challenges')
 
 
 @app.route('/')
