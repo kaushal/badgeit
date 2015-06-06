@@ -3,17 +3,14 @@
 <section class="container badge-list">
 
     <h2>RECENT BADGES</h2>
-    <!--
-    <a href="{{url_for('create_challenge_page') }}" class="btn btn-default">Create Challenge!</a>
-    <a href="{{url_for('analytics') }}" class="btn btn-default">Analytics!</a>
-    -->
+
     {% if challenges %}
     {% for challenge in challenges %}
-    <a class="row" href="#">
+    <a class="row" href="{{url_for("challenge", name=challenge["badgeTitle"])}}">
         <div class="badge-image col-xs-4 col-lg-offset-1 col-lg-1"><img class="img-responsive" src="badges/{{ challenge["badgeTitle"] }}.png" alt="{{ challenge["badgeTitle"] }}"></div>
         <div class="badge-text col-xs-8 col-lg-9">
-            <h3>{{ challenge["badgeTitle"] }}:</h3>
-            <h4>{{ challenge["badgeText"] }}</h4>
+            <h3 class="badge-title">{{ challenge["badgeTitle"] }}:</h3>
+            <h3 class="badge-desc">{{ challenge["badgeText"] }}</h3>
         </div>
     </a>
     {% endfor %}

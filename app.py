@@ -75,7 +75,7 @@ def challenge():
     name = request.args.get('badgeImage')
     challenge = challenges.find({'badgeImage': name})
     challenge = [c for c in challenge]
-    return render_template('challenge_page.html', challenge=challenge)
+    return render_template('challenge_page.html', challenge=challenge[0])
 
 
 @app.route('/')
