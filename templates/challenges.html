@@ -1,0 +1,21 @@
+<html>
+<head></head>
+<body>
+    
+    <form action="{{url_for('create_challenge_page') }}">
+        <button type=submit>Create Challenge!</button>
+    </form>
+
+    <form action="{{url_for('analytics') }}">
+        <button type=submit>analytics!</button>
+    </form>
+
+    {% if challenges %}
+        {% for challenge in challenges %}
+        <li>{{ challenge }}</li>
+        {% endfor %}
+    {% else %}
+        <p>there are no challenges currently in the system, please try again later or create your own!</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="css/bootstrap3.3.4.min.css">
+		<link rel="stylesheet" href="css/style2.css">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>BADGEit | Challenge Accepted!!</title>
+	</head>
+	<body>		
+		<nav class="navbar navbar-fixed-top">
+			<header class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<img src="img/badgeIt.png" class="img-responsive logo">
+					</a>
+				</div>
+				
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a role="button" href="{{ url_for('login') }}" class="btn btn-default">login</a></li>
+					</ul>
+				</div>
+        	</header>
+		</nav>
+		
+		<section class="about container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-md-8 col-md-offset-2">
+					<p>BADGEit is a platform where you can challenge your friends to create awareness about how awesome you are. Companies can use BADGEit to promote their brand challenging their advocates.</p>
+					<div class="row">
+						<div class="col-xs-6 col-xs-offset-3">
+							<form class="contact-form form-inline" action="{{url_for('email')}}">
+								<div class="form-group">
+									<input type="email" class="form-control" placeholder="I wanna learn more!!!">
+								</div>
+								<input class="btn btn-default" type="submit" value="email me">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="how container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-md-8 col-md-offset-2">
+					<h2>How it works</h2>
+					<p>BADGEit let's you challenge your friends and get rewards for taking dares. Looking for a tool to keep track of your group, know who is the best and get a reward for it? Badge it and start rolling!</p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="team container-fluid">
+			<h2>Our Team</h2>
+		
+			<div class="row">
+				<div class="member col-xs-12 col-md-6 col-lg-offset-2 col-lg-2">
+					<div class="photo">
+						<img src="img/eileen.jpg" class="img-responsive img-circle" alt="Eileen Cannon">
+					</div>
+					<div class="about-me">
+						<h3>Eileen Cannon</h3>
+						<p>Educator. Love learning, kids, technology, and the Yankees. Girardi checks stats and options on an iPad before he makes calls. Shouldn't teachers have the same?</p>
+					</div>
+				</div>
+			
+				<div class="member col-xs-12 col-md-6 col-lg-offset-1 col-lg-2">
+					<div class="photo">
+						<img src="img/giio.jpg" class="img-responsive img-circle" alt="Gio Barbieri">
+					</div>
+					<div class="about-me">
+						<h3>Gio Barbieri</h3>
+						<p>Filling StartupHouse with bootstrapping entrepreneurs. Disruptive ideas enthusiast. Firefighter at heart with a Golden State mindset.</p>
+					</div>
+				</div>
+		
+				<div class="member col-xs-12 col-md-6 col-lg-offset-1 col-lg-2">
+					<div class="photo">
+						<img src="img/JimSaunders.jpg" class="img-responsive img-circle" alt="Jim Saunders">
+					</div>
+					<div class="about-me">
+						<h3>Jim Saunders</h3>
+						<p>True blue Kentucky basketball fan who loves to code. I want to build things that people enjoy.</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="member col-xs-12 col-md-6 col-lg-offset-2 col-lg-2">
+					<div class="photo">
+						<img src="img/joshuawaller.jpg" class="img-responsive img-circle" alt="Josh Waller">
+					</div>
+					<div class="about-me">
+						<h3>Josh Waller</h3>
+						<p>Josh Waller has helped dozens of startups establish and scale their sales and marketing efforts. He’s currently leading the sales and marketing teams at Krossover.</p>
+					</div>
+				</div>
+			
+				<div class="member col-xs-12 col-md-6 col-lg-offset-1 col-lg-2">
+					<div class="photo">
+						<img src="img/KaushalParikh.jpg" class="img-responsive img-circle" alt="Kaushal Parikh">
+					</div>
+					<div class="about-me">
+						<h3>Kaushal Parikh</h3>
+						<p>Hacker, evangelist, and traveler who's spent the last few years working with students, building awesome things and traveling the world </p>
+					</div>
+				</div>
+				
+				<div class="member col-xs-12 col-md-6 col-lg-offset-1 col-lg-2">
+					<div class="photo">
+						<img src="img/stan.jpg" class="img-responsive img-circle" alt="Stan">
+					</div>
+					<div class="about-me">
+						<h3>Stanley Joseph</h3>
+						<p>NYC based designer and front-end developer. Currently working with emerging brands to create strong brand identities. </p>
+					</div>
+				</div>
+			</div>
+		
+		</section>
+		
+		<script src="js/bootstrap3.3.4.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+	</body>
+</html>
