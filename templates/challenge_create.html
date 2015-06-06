@@ -1,58 +1,66 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="css/bootstrap3.3.4.min.css">
+        <link rel="stylesheet" href="css/style2.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>BADGEit | Challenge Accepted!!</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-fixed-top">
+            <header class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img src="img/badgeIt.png" class="img-responsive logo">
+                    </a>
+                </div>
 
-<head>
-    <link rel="stylesheet" href="css/bootstrap3.3.4.min.css">
-    <link rel="stylesheet" href="css/style2.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BADGEit | Challenge Accepted!!</title>
-</head>
-<body>
-    <nav class="navbar navbar-fixed-top">
-        <header class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img src="/img/badgeIt.png" class="img-responsive logo">
-                </a>
-            </div>
-
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a role="button" href="{{ url_for('login') }}" class="btn btn-default">login</a></li>
-                </ul>
-            </div>
-        </header>
-    </nav>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a role="button" href="{{ url_for('login') }}" class="btn btn-default">login</a></li>
+                    </ul>
+                </div>
+            </header>
+        </nav>
 
     <!-- Start Badge Creation Tool -->
     <section class="container badge-creator">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="canvas">
-                    <canvas id="c1" width="300" height="300"></canvas>
+        <h2>BADGE BUILDER</h2>
+        <div class="row badge-creator-inner">
+            <div class="col-xs-8  col-lg-3 col-xs-offset-1 col-lg-offset-4 canvas">
+                <canvas id="c1" width="100%" height="100%"></canvas>
+            </div>
+            <div class="tools col-xs-2 col-lg-1">
+                <div class="shape circle" data-draw-radius="30">
+                    <img src="img/circle.png" alt="" class="img-responsive">
+                </div>
+                <div class="shape line" data-draw-width="60">
+                    <img src="img/line.png" alt="" class="img-responsive">
+                </div>
+                <div class="shape square" data-draw-width="60" data-draw-height="60">
+                    <img src="img/square.png" alt="" class="img-responsive">
+                </div>
+                <div class="shape triangle" data-draw-width="60" data-draw-height="60">
+                    <img src="img/triangle.png" alt="" class="img-responsive">
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-1 col-xs-offset-4">
-                    <div class="shape circle" data-draw-radius="30">
-                        <div class="shape inner-circle"></div>
-                    </div>
-            </div>
-            <div class="col-xs-1 col-xs-offset-1">
-                    <div class="shape square" data-draw-width="60" data-draw-height="60">
-                        <div class="shape inner-square"></div>
-                    </div>
-            </div>
-            <div class="col-xs-1 col-xs-offset-1">
-                    <div class="shape triangle" data-draw-width="60" data-draw-height="60">
-                        <div class="shape inner-triangle"></div>
-                    </div>
-            </div>
+
         </div>
-        <form class="row" id="challenge-create" action="{{ url_for('create_challenge') }}">
-            <div class="col-xs-6 col-xs-offset-3"><textarea class="form-control" name="badge-text" placeholder="What's this badge about?"></textarea></div>
-            <div class="col-xs-6 col-xs-offset-3"><input class="btn btn-default" type="submit" value="Create Badge"/></div>
+
+        <form id="challenge-create" action="{{ url_for('create_challenge') }}">
+            <div class="row">
+                <div class="name-it col-xs-10 col-lg-4 col-xs-offset-1 col-lg-offset-4">
+                    <input name="badge-text" placeholder="Name it!" type="text">
+                </div>
+            </div>
+            <div class="row">
+                <div class="create-it col-xs-2 col-xs-offset-9 col-lg-1 col-lg-offset-7">
+                    <input class="btn btn-default" type="submit" value="BADGEit"/>
+                </div>
+            </div>
         </form>
     </section>
 
