@@ -79,7 +79,7 @@ def challenge():
     if challenge[0]['name'] == ['screen_name'] or challenge[0]['name'] in [item['name'] for item in challenge[0]['claimed']] or g.user == None:
         print 'Nope'
         showButton = False
-
+    print challenge
     return render_template('challenge_page.html', challenge=challenge[0], showButton=showButton)
 
 
@@ -115,10 +115,10 @@ def highfive():
     )
     doc_we_want['validated'] = True
     challenges.update(
-            {'badgeImage': badgeImage},
-            {"$push": {'claimed': doc}}
+        {'badgeImage': badgeImage},
+        {"$push": {'claimed': doc}}
     )
-    return url_for('challenge', name=badgeImage)
+    return redirect(url_for('challenge', name=badgeImage))
 
 @app.route('/')
 def index():
