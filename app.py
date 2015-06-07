@@ -75,7 +75,12 @@ def challenge():
     name = request.args.get('name')
     challenge = challenges.find({'badgeImage': name})
     challenge = [c for c in challenge]
-    return render_template('challenge_page.html', challenge=challenge[0])
+    showButton = True
+    if challenge[0]['name'] == ['screen_name'] or challenge[0]['name'] in [item['name'] for item in challenge[0]['claimed']] or g.user == None:
+        print 'Nope'
+        showButton = False
+
+    return render_template('challenge_page.html', challenge=challenge[0], showButton=showButton)
 
 
 @app.route('/claim_challenge', methods=['GET'])
@@ -89,8 +94,7 @@ def claim_challenge():
             {'badgeImage': name},
             {"$push": {'claimed': doc}}
     )
-    return url_for('get_challenges')
-
+    return get_challenges()
 
 @app.route('/')
 def index():
