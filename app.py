@@ -98,7 +98,8 @@ def claim_challenge():
     return get_challenges()
 
 @app.route('/highfive', methods=['get'])
-def high_five():
+def highfive():
+    name = request.args.get('name')
     badgeImage = request.args.get('badgeImage')
     name = request.args.get('name')
     challenge = challenges.find_one({'badgeImage': badgeImage})
