@@ -76,8 +76,9 @@ def challenge():
     challenge = challenges.find({'badgeImage': name})
     challenge = [c for c in challenge]
     showButton = True
-    if challenge[0]['name'] == g.user['screen_name'] or challenge[0]['name'] in [item['name'] for item in challenge[0]['claimed']] or g.user == None:
-        showButton = False
+    if g.user:
+        if challenge[0]['name'] == g.user['screen_name'] or challenge[0]['name'] in [item['name'] for item in challenge[0]['claimed']] or g.user == None:
+            showButton = False
     return render_template('challenge_page.html', challenge=challenge[0], showButton=showButton)
 
 
@@ -85,6 +86,8 @@ def challenge():
 def claim_challenge():
     name = request.args.get('name')
     doc = {}
+    if not g.user:
+        return get_challenges()
     user = users.find_one({'name': g.user['screen_name']})
     doc['name'] = g.user['screen_name']
     doc['profile_image_url'] = user['profile_image_url']
