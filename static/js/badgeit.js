@@ -5,7 +5,7 @@ $(function(){
     var $canvas = $('.canvas');
 
     var defaults = {
-        //fill: 'rgba(255,255,255,0.0)',
+        fill: 'rgba(255,255,255,0.0)',
         top: canvas.getHeight() / 2,
         left: canvas.getWidth() / 2,
         stroke: '#fff',
