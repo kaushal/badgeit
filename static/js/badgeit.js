@@ -20,14 +20,14 @@ $(function(){
     canvas.setHeight(size);
     canvas.setWidth(size);
 
-    $(document).keyup(function(e)
-    {
+    $(document).keydown(function(e) {
         var del = (e.keyCode == 46 || e.keyCode == 8);
         if (active && del) {
             active.remove();
             active = null;
             canvas.discardActiveObject();
             symbolCount--;
+            return false;
         }
     });
 
@@ -79,27 +79,23 @@ $(function(){
 
   $('.line').click(function(e) {
   	var shapeDefaults = $.extend({}, defaults);
-    var line = new fabric.Line($.extend(shapeDefaults, {
-    	angle: 30,
-    	width: $(this).data('drawWidth'),
-    	strokeWidth: $(this).data('drawWidth') * 0.1,
-    	top: defaults.top - $(this).data('drawHeight') / 2,
-    	left: defaults.left - $(this).data('drawWidth') / 2
+    var coords = [ 250, 175, 175, 225 ];
+    var line = new fabric.Line(coords, $.extend(shapeDefaults, {
+        strokeWidth: $(this).data('drawWidth')
     }));
+
     canvas.add(line);
     canvas.setActiveObject(line);
     active = line;
     symbolCount++;
   });
 
-  $(':input').focus(function(e)
-  {
+  $(':input').focus(function(e) {
      active = null;
      canvas.discardActiveObject();
   });
 
-  $('#challenge-create').submit(function(e)
-  {
+  $('#challenge-create').submit(function(e) {
     var $this = $(this);
   	var data = {
 	  badgeImage: canvas.toDataURL(),
