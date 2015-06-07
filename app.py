@@ -45,7 +45,7 @@ def before_request():
 
 @app.route('/challenges', methods=['GET'])
 def get_challenges():
-    chals = [challenge for challenge in challenges.find()]
+    chals = reversed([challenge for challenge in challenges.find()])
     return render_template('challenges.html', challenges=chals)
 
 @app.route('/create_challenge_page')
