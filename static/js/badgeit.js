@@ -5,7 +5,7 @@ $(function(){
     var $canvas = $('.canvas');
 
     var defaults = {
-        fill: 'rgba(255,255,255,0.0)',
+        //fill: 'rgba(255,255,255,0.0)',
         top: canvas.getHeight() / 2,
         left: canvas.getWidth() / 2,
         stroke: '#fff',
@@ -88,6 +88,25 @@ $(function(){
     canvas.setActiveObject(line);
     active = line;
     symbolCount++;
+  });
+
+  $('.image').click(function(e) {
+      var shapeDefaults = $.extend({}, defaults);
+      var $img = $(this).find('img');
+      var width = $(this).data('drawWidth');
+      var height = $(this).data('drawHeight');
+
+      fabric.Image.fromURL('../'+$img.attr('src'), function(img) {
+          var oImg = img.set($.extend(shapeDefaults, {
+              top: defaults.top - width / 2,
+              left: defaults.left - height / 2
+          })).scale(width / $img[0].naturalWidth);
+
+          canvas.add(oImg).renderAll();
+          canvas.setActiveObject(oImg);
+          active = img;
+          symbolCount++;
+      });
   });
 
   $(':input').focus(function(e) {
