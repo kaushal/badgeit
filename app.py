@@ -109,15 +109,15 @@ def highfive():
             for doc in challenge['claimed']:
                 if doc['name'] == name:
                     doc_we_want = doc
-    challenges.update(
-        {'badgeImage': badgeImage},
-        {'$pull': {'claimed': doc_we_want}}
-    )
-    doc_we_want['validated'] = True
-    challenges.update(
-        {'badgeImage': badgeImage},
-        {"$push": {'claimed': doc}}
-    )
+                    challenges.update(
+                        {'badgeImage': badgeImage},
+                        {'$pull': {'claimed': doc_we_want}}
+                    )
+                    doc_we_want['validated'] = True
+                    challenges.update(
+                        {'badgeImage': badgeImage},
+                        {"$push": {'claimed': doc}}
+                    )
     return redirect(url_for('challenge', name=badgeImage))
 
 @app.route('/')
