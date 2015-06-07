@@ -99,11 +99,25 @@ def claim_challenge():
 
 @app.route('/highfive', methods=['get'])
 def high_five():
-    name = request.args.get('name')
     badgeImage = request.args.get('badgeImage')
-    if g.user['screen_name']:
-        return ''
-    return ''
+    name = request.args.get('name')
+    challenge = challenges.find_one({'badgeImage': badgeImage})
+    doc_we_want = {}
+    if challenge:
+        if challenge['name'] == g.user['screen_name']:
+            for doc in challenge['claimed']:
+                if doc['name'] == name:
+                    doc_we_want = doc
+    challenges.update(
+        {'badgeImage': badgeImage},
+        {'$pull': {'claimed': doc_we_want}}
+    )
+    doc_we_want['validated'] = True
+    challenges.update(
+            {'badgeImage': badgeImage},
+            {"$push": {'claimed': doc}}
+    )
+    return url_for('challenge', name=badgeImage)
 
 @app.route('/')
 def index():
