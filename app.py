@@ -96,7 +96,7 @@ def claim_challenge():
             {'badgeImage': name},
             {"$push": {'claimed': doc}}
     )
-    return get_challenges()
+    return redirect(url_for('challenge', name=name))
 
 @app.route('/highfive', methods=['get'])
 def highfive():
