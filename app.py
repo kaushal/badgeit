@@ -90,18 +90,27 @@ def claim_challenge():
     user = users.find_one({'name': g.user['screen_name']})
     doc['name'] = g.user['screen_name']
     doc['profile_image_url'] = user['profile_image_url']
+    doc['validated'] = False
     challenges.update(
             {'badgeImage': name},
             {"$push": {'claimed': doc}}
     )
     return get_challenges()
 
+@app.route('/highfive', methods=['get'])
+def high_five():
+    name = request.args.get('name')
+    badgeImage = request.args.get('badgeImage')
+    if g.user['screen_name']:
+        return ''
+    return ''
+
 @app.route('/')
 def index():
     tweets = None
     if g.user is not None:
         resp = twitter.request('statuses/home_timeline.json')
-        userResp = twitter.request('users/show.json?screen_name=cashbagel')
+        userResp = twitter.request('users/show.json?screen_name='+ g.user['screen_name'])
         if resp.status == 200:
             tweets = resp.data
         else:
