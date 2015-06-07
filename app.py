@@ -76,10 +76,8 @@ def challenge():
     challenge = challenges.find({'badgeImage': name})
     challenge = [c for c in challenge]
     showButton = True
-    if challenge[0]['name'] == ['screen_name'] or challenge[0]['name'] in [item['name'] for item in challenge[0]['claimed']] or g.user == None:
-        print 'Nope'
+    if challenge[0]['name'] == g.user['screen_name'] or challenge[0]['name'] in [item['name'] for item in challenge[0]['claimed']] or g.user == None:
         showButton = False
-    print challenge
     return render_template('challenge_page.html', challenge=challenge[0], showButton=showButton)
 
 
