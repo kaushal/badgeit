@@ -122,6 +122,17 @@ def highfive():
                         )
     return redirect(url_for('challenge', name=badgeImage))
 
+@app.route('/data')
+def data():
+    badges = challenges.find()
+    badges = [badge for badge in badges]
+    badges_no = str(len(badges))
+    user = users.find()
+    user = [usera for usera in user]
+    user_no = str(len(user))
+    string = 'Badges created: ' + badges_no + '\n' + 'Registered users: ' + user_no
+    return string
+
 @app.route('/')
 def index():
     tweets = None
