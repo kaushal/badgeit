@@ -44,9 +44,11 @@
                 <h2 style="float: left; display: inline; margin: 10px 20px 5px 0; vertical-align: middle;">{{ claimer["name"] }}</h2>
                 <div style="float: left; display: inline; height: 36px; width: 36px;">
                     {% if claimer["validated"] %}
-                        <img src="img/high5_click.png" alt="" class="img-responsive">
+                        <img src="img/thumbsup.png" alt="" class="img-responsive">
                     {% else %}
-                        <a href="{{ url_for("highfive", name=claimer["name"],badgeImage=challenge["badgeImage"]) }}" data-toggle="tooltip" data-placement="top" title="High Five!"><img src="img/high5.png" alt="" class="img-responsive"></a>
+                        <a href="{{ url_for("highfive", name=claimer["name"],badgeImage=challenge["badgeImage"]) }}" data-toggle="tooltip" data-placement="top" title="High Five!">
+                            <img src="img/high5.png" alt="" class="img-responsive">
+                        </a>
                     {% endif %}
                 </div>
                 <div class="clearfix"></div>
